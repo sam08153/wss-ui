@@ -47,6 +47,12 @@ export class RestApiService {
             .pipe(retry(1), catchError(this.handleError));
         }
 
+      getMyOrders(id: any): Observable<Order> {
+          return this.http
+            .get<Order>(this.apiURL + '/orderFood/' + id)
+            .pipe(retry(1), catchError(this.handleError));
+      }
+
 
   handleError(error: any) {
       let errorMessage = '';

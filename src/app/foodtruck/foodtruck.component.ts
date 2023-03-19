@@ -9,6 +9,7 @@ import { RestApiService } from '../shared/rest-api.service';
 export class FoodtruckComponent {
 
   FoodTruck: any = [];
+  MyOrders: any = [];
   EmployeeName: string = '';
   EmployeeId: string = '';
   orderConfirm: boolean = false;
@@ -17,6 +18,7 @@ export class FoodtruckComponent {
   foodName: string = '';
   foodPrice: string = '';
   menuConfirm: boolean = false;
+  empId: string = '';
 
 
   constructor(public restApi: RestApiService,) {
@@ -69,6 +71,12 @@ export class FoodtruckComponent {
           });
 
 
+  }
+
+  myOrders() {
+      return this.restApi.getMyOrders(this.empId).subscribe((data: {}) => {
+        this.MyOrders = data;
+      });
   }
 
 }
